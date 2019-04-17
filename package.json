@@ -1,0 +1,9 @@
+{
+  "name": "redux-async-middleware",
+  "version": "0.0.1",
+  "description": "Handling of asynchronous request in Redux",
+  "main": "index.js",
+  "repository": "git@github.com:s33h0w/redux-async-middleware.git",
+  "author": "s33h0w <seehow_d@126.com>",
+  "license": "MIT"
+}
