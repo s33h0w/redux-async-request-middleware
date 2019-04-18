@@ -50,5 +50,8 @@
       "eslint --fix",
       "git add"
     ]
+  },
+  "dependencies": {
+    "redux-actions": "^2.6.5"
   }
 }
