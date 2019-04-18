@@ -1,3 +1,3 @@
 import RSAA from './RSAA'
-
-export default { RSAA }
+import reduxAsyncMiddleware from './middleware'
+export default { RSAA, reduxAsyncMiddleware }
