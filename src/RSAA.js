@@ -9,8 +9,8 @@ export type RSAA_TYPE = {
     promise: Promise<any>,
   },
   meta?: {
-    onResolved: (response: any, store?: { getState: Function }) => void,
-    onRejected: (error: Error, store?: { getState: Function }) => void,
+    onResolved?: (response: any, store?: { getState: Function }) => void,
+    onRejected?: (error: Error, store?: { getState: Function }) => void,
   },
 }
 
@@ -20,16 +20,27 @@ export const isRSAA = (action: RSAA_TYPE) => {
 
 const createRSAA = (type: string, asyncFunction: () => Promise<any>) => (
   ...args: any
-) => (onResolved: Function, onRejected: Function): RSAA_TYPE => {
+) => {
+  if (typeof createRSAA(type, asyncFunction)(...args) === 'function') {
+    return function(onResolved: Function, onRejected: Function): RSAA_TYPE {
+      return {
+        type: RSAA,
+        payload: {
+          type,
+          promise: asyncFunction(...args),
+        },
+        meta: {
+          onResolved: onResolved,
+          onRejected: onRejected,
+        },
+      }
+    }
+  }
   return {
     type: RSAA,
     payload: {
       type,
       promise: asyncFunction(...args),
-    },
-    meta: {
-      onResolved,
-      onRejected,
     },
   }
 }
