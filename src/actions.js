@@ -36,7 +36,6 @@ export function createPendingAction(action: RSAA_TYPE): PENDING_ACTION_TYPE {
 type RESOLVED_ACTION_TYPE = {
   type: string,
   payload: any,
-  meta?: Function,
 }
 
 // 生成RSAA对应的Resolved Action
@@ -45,11 +44,7 @@ export function createResolvedAction(
   response: any
 ): RESOLVED_ACTION_TYPE {
   const type = getActionTypeByRSAA[1]
-  const resolve = createAction(
-    type,
-    res => res,
-    () => action.meta && action.meta.onResolved
-  )
+  const resolve = createAction(type)
   return resolve(response)
 }
 
@@ -57,7 +52,6 @@ export function createResolvedAction(
 type REJECTED_ACTION_TYPE = {
   type: string,
   payload: Error,
-  meta?: Function,
   error: true,
 }
 
@@ -67,11 +61,7 @@ export function createRejectedAction(
   error: Error
 ): REJECTED_ACTION_TYPE {
   const type = getActionTypeByRSAA[2]
-  const reject = createAction(
-    type,
-    err => err,
-    () => action.meta && action.meta.onRejected
-  )
+  const reject = createAction(type)
   return reject(error)
 }
 

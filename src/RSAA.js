@@ -9,8 +9,8 @@ export type RSAA_TYPE = {
     promise: Promise<any>,
   },
   meta?: {
-    onResolved: Function,
-    onRejected: Function,
+    onResolved: (response: any, store?: { getState: Function }) => void,
+    onRejected: (error: Error, store?: { getState: Function }) => void,
   },
 }
 
