@@ -12,7 +12,7 @@ const getActionTypeWithSuffix = (
     | typeof PENDING_SUFFIX
     | typeof RESOLVED_SUFFIX
     | typeof REJECTED_SUFFIX
-) => action.payload.type + suffix
+) => action.payload.type.toUpperCase() + suffix
 
 // Pending Action
 type PENDING_ACTION_TYPE = {
