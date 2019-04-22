@@ -1,5 +1,5 @@
 {
-  "name": "redux-async-middleware",
+  "name": "redux-async-request-middleware",
   "version": "0.0.1",
   "description": "Handling of asynchronous request in Redux",
   "main": "index.js",
