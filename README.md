@@ -1,4 +1,4 @@
-# redux-async-middleware
+# redux-async-request-middleware
 
 ## Usage
 
