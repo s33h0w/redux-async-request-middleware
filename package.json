@@ -1,9 +1,13 @@
 {
   "name": "redux-async-request-middleware",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Handling of asynchronous request in Redux",
   "main": "build/index.js",
-  "repository": "git@github.com:s33h0w/redux-async-middleware.git",
+  "homepage": "https://github.com/s33h0w/redux-async-request-middleware",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/s33h0w/redux-async-request-middleware.git"
+  },
   "author": "s33h0w <seehow_d@126.com>",
   "license": "MIT",
   "scripts": {
