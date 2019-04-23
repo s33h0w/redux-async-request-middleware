@@ -7,16 +7,16 @@ const RESOLVED_SUFFIX = '_RESOLVED'
 const REJECTED_SUFFIX = '_REJECTED'
 
 const getActionTypeWithSuffix = (
-  action: RSAA_TYPE,
+  type: string,
   suffix:
     | typeof PENDING_SUFFIX
     | typeof RESOLVED_SUFFIX
     | typeof REJECTED_SUFFIX
-) => action.payload.type.toUpperCase() + suffix
+) => type.toUpperCase() + suffix
 
-const getActionTypeByRSAA = (action: RSAA_TYPE): Array<string> =>
+const getActionTypeByRSAA = (type: string): Array<string> =>
   [PENDING_SUFFIX, RESOLVED_SUFFIX, REJECTED_SUFFIX].map(suffix =>
-    getActionTypeWithSuffix(action, suffix)
+    getActionTypeWithSuffix(type, suffix)
   )
 
 // Pending Action
@@ -27,7 +27,7 @@ type PENDING_ACTION_TYPE = {
 
 // 生成RSAA对应的Pending Action
 export function createPendingAction(action: RSAA_TYPE): PENDING_ACTION_TYPE {
-  const type = getActionTypeByRSAA[0]
+  const type = getActionTypeByRSAA(action.payload.type)[0]
   const executor = createAction(type)
   return executor(action.payload.promise)
 }
@@ -43,7 +43,7 @@ export function createResolvedAction(
   action: RSAA_TYPE,
   response: any
 ): RESOLVED_ACTION_TYPE {
-  const type = getActionTypeByRSAA[1]
+  const type = getActionTypeByRSAA(action.payload.type)[1]
   const resolve = createAction(type)
   return resolve(response)
 }
@@ -60,7 +60,7 @@ export function createRejectedAction(
   action: RSAA_TYPE,
   error: Error
 ): REJECTED_ACTION_TYPE {
-  const type = getActionTypeByRSAA[2]
+  const type = getActionTypeByRSAA(action.payload.type)[2]
   const reject = createAction(type)
   return reject(error)
 }
