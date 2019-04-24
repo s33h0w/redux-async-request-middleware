@@ -1,6 +1,6 @@
 {
   "name": "redux-async-request-middleware",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Handling of asynchronous request in Redux",
   "main": "build/index.js",
   "homepage": "https://github.com/s33h0w/redux-async-request-middleware",
