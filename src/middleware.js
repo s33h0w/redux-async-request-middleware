@@ -24,16 +24,14 @@ function reduxAsyncMiddleware({ getState }: { getState: Function }) {
       return next(rejectedAction)
     }
 
-    return () => {
-      // TODO 无效的RSAA处理
-      // TODO 防抖
-      // Promise pending
-      const pendingAction = createPendingAction(action)
-      next(pendingAction)
-      return pendingAction.payload
-        .then(handleResolve, handleReject)
-        .catch(handleReject)
-    }
+    // TODO 无效的RSAA处理
+    // TODO 防抖
+    // Promise pending
+    const pendingAction = createPendingAction(action)
+    next(pendingAction)
+    return pendingAction.payload
+      .then(handleResolve, handleReject)
+      .catch(handleReject)
   }
 }
 
