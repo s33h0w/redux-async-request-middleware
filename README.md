@@ -58,14 +58,6 @@ class UserComponent extends React.Component{
   }
   componentDidMount() {
     const { getUser } = this.props
-    const onSuccess = (res) => {
-      this.setState({
-        user: res.data,
-      })
-    }
-    const onFailure = (err) => {
-      console.log(err.message)
-    }
     getUser(123)
   }
   render() {
@@ -101,8 +93,6 @@ The `createRSAA` generates RSAA.
 
   - `type(String)`: defines the unique type of the related async actions. e.g.: `type_PENDING`, `type_RESOLVED`, `type_REJECTED`
   - `asyncFunction(Function)`: function which returns Promise
-  - `onResolved(Function?: (response, { getState }) => {})`: function which will be called when resolved
-  - `onRejected(Function?: : (error, { getState }) => {})`: function which will be called when rejected
   - `...asyncFunctionArguments(arguments)`: arguments will call by `asyncFunction`
 
 `onResolved` and `onRejected` receives `response`(or`error`) and Redux Store's `getState` as arguments. They are usually used as callback function of the asynchronous work.
