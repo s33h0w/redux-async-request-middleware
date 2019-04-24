@@ -16,19 +16,11 @@ function reduxAsyncMiddleware({ getState }: { getState: Function }) {
     // Promise resolved
     const handleResolve = response => {
       const resolvedAction = createResolvedAction(action, response)
-      const onResolved = action.meta && action.meta.onResolved
-      if (onResolved && typeof onResolved === 'function') {
-        onResolved(response, { getState })
-      }
       return next(resolvedAction)
     }
     // Promise rejected
     const handleReject = error => {
       const rejectedAction = createRejectedAction(action, error)
-      const onRejected = action.meta && action.meta.onRejected
-      if (onRejected && typeof onRejected === 'function') {
-        onRejected(error, { getState })
-      }
       return next(rejectedAction)
     }
 
